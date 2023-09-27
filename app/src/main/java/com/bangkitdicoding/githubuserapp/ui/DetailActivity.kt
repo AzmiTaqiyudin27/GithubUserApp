@@ -31,18 +31,18 @@ class DetailActivity : AppCompatActivity() {
 
         detailViewModel.username.observe(this) {
             Glide.with(this@DetailActivity)
-            .load(it!!.avatarUrl)
+            .load(it.avatarUrl)
             .circleCrop()
             .into(binding.photo)
-            binding.fullname.text = it!!.name
-            binding.username.text = it!!.login
+            binding.fullname.text = it.name
+            binding.username.text = it.login
             val sectionPagerAdapter = SectionPagerAdapter(this)
             sectionPagerAdapter.username = user.toString()
             binding.viewPager.adapter = sectionPagerAdapter
             val tabs : TabLayout = findViewById(R.id.tabs)
             val follow = mutableListOf<String>(
-                    String.format(getString(R.string.Followers,it!!.followers)),
-                    String.format(getString(R.string.Following,it!!.following))
+                    String.format(getString(R.string.Followers,it.followers)),
+                    String.format(getString(R.string.Following,it.following))
             )
             TabLayoutMediator(tabs, binding.viewPager) { tab, position ->
                 tab.text = follow[position]
@@ -54,13 +54,7 @@ class DetailActivity : AppCompatActivity() {
         }
     }
 
-    private fun showLoading(isLoading: Boolean) {
-        if (isLoading){
-            binding.progressBar.visibility = View.VISIBLE
-        } else{
-            binding.progressBar.visibility = View.GONE
-        }
-    }
+    private fun showLoading(state: Boolean) { binding.progressBar.visibility = if (state) View.VISIBLE else View.GONE }
 
     companion object{
         const val USERNAME = "AzmiTaqiyudin27"

@@ -10,17 +10,14 @@ import retrofit2.create
 class ApiConfig {
     companion object{
         fun getApiServices(): ApiService {
-            val loggingInterceptor =
-                HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
             val authInterceptor = Interceptor { chain ->
                 val req = chain.request()
                 val requestHeaders = req.newBuilder()
-                    .addHeader("Authorization", "token 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")
+                    .addHeader("Authorization", "BuildConfig.KEY")
                     .build()
                 chain.proceed(requestHeaders)
             }
             val client = OkHttpClient.Builder()
-                .addInterceptor(loggingInterceptor)
                 .addInterceptor(authInterceptor)
                 .build()
             val retrofit = Retrofit.Builder()

@@ -12,7 +12,7 @@ import com.bangkitdicoding.githubuserapp.databinding.ItemUserBinding
 import com.bumptech.glide.Glide
 
 class ListUserAdapter: ListAdapter <ItemsItem, ListUserAdapter.MyViewHolder>(DIFF_CALLBACK) {
-    class MyViewHolder(val binding: ItemUserBinding) :RecyclerView.ViewHolder(binding.root){
+    class MyViewHolder(private val binding: ItemUserBinding) :RecyclerView.ViewHolder(binding.root){
         fun bind(Item: ItemsItem){
             binding.apply {
                 Glide.with(itemView.context)

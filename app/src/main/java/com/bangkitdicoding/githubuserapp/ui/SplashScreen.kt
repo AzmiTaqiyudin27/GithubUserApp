@@ -8,7 +8,6 @@ import android.os.Handler
 import com.bangkitdicoding.githubuserapp.R
 
 class SplashScreen : AppCompatActivity() {
-    private val SPLASH_TIMEOUT : Long = 1000L
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
@@ -17,5 +16,9 @@ class SplashScreen : AppCompatActivity() {
             startActivity(Intent(this,MainActivity::class.java))
             finish()
         }, SPLASH_TIMEOUT)
+    }
+
+    companion object{
+        const val SPLASH_TIMEOUT : Long = 1000L
     }
 }

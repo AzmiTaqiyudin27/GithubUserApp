@@ -34,7 +34,7 @@ class ListViewModel : ViewModel(){
             ){
                 _isLoading.value = false
                 if (response.isSuccessful){
-                    _user.value = response.body()?.items!!
+                    _user.value = response.body()?.items
                 } else {
                     Log.e(TAG, "onFailure: ${response.message()}")
                 }
@@ -50,7 +50,7 @@ class ListViewModel : ViewModel(){
 
 
     companion object {
-        private const val TAG = "MainViewHolder"
+        private const val TAG = "USERNAME"
         private const val username = "Azmi"
     }
 }

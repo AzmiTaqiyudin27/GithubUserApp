@@ -47,13 +47,8 @@ class MainActivity : AppCompatActivity() {
             }
 
     }
-    private fun showLoading(isLoading: Boolean) {
-        if (isLoading){
-            binding.progressBar.visibility = View.VISIBLE
-        } else{
-            binding.progressBar.visibility = View.GONE
-        }
-    }
+    private fun showLoading(state: Boolean) {
+        binding.progressBar.visibility = if (state) View.VISIBLE else View.GONE }
 
     private fun setUserData(user: List<ItemsItem?>?) {
         val adapter = ListUserAdapter()

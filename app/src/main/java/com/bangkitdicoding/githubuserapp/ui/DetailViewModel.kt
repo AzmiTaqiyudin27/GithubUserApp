@@ -14,8 +14,8 @@ import retrofit2.Response
 
 class DetailViewModel:  ViewModel() {
 
-    private val _username = MutableLiveData<DetailUserResponse?>()
-    val username: LiveData<DetailUserResponse?> = _username
+    private val _username = MutableLiveData<DetailUserResponse>()
+    val username: LiveData<DetailUserResponse> = _username
 
     private val _followers = MutableLiveData<List<ItemsItem>>()
     val followers: LiveData<List<ItemsItem>> = _followers
