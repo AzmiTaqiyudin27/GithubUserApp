@@ -1,11 +1,12 @@
-package com.bangkitdicoding.githubuserapp.ui
+package com.bangkitdicoding.ui
 
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bangkitdicoding.githubuserapp.data.response.ItemsItem
+import com.bangkitdicoding.data.remote.response.ItemsItem
 import com.bangkitdicoding.githubuserapp.databinding.ItemUserBinding
+import com.bangkitdicoding.utils.loadImage
 import com.bumptech.glide.Glide
 
 class ListFollowAdapter (private val listUser: List<ItemsItem>) :
@@ -14,14 +15,11 @@ class ListFollowAdapter (private val listUser: List<ItemsItem>) :
     class MyViewHolder(val binding: ItemUserBinding) : RecyclerView.ViewHolder(binding.root){
         fun bind(Item: ItemsItem){
             binding.apply {
-                Glide.with(itemView.context)
-                    .load(Item.avatarUrl)
-                    .circleCrop()
-                    .into(imgItemPhoto)
+                imgItemPhoto.loadImage(Item.avatarUrl)
                 tvItemName.text = Item.login
                 itemView.setOnClickListener{
                     val intentDetail = Intent(itemView.context, DetailActivity::class.java)
-                    intentDetail.putExtra( DetailActivity.USERNAME, Item.login)
+                    intentDetail.putExtra(DetailActivity.USERNAME, Item.login)
                     itemView.context.startActivity(intentDetail)
                 }
             }

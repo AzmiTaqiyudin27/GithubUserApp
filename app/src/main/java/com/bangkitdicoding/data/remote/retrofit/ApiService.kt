@@ -1,8 +1,8 @@
-package com.bangkitdicoding.githubuserapp.data.retrofit
+package com.bangkitdicoding.data.remote.retrofit
 
-import com.bangkitdicoding.githubuserapp.data.response.DetailUserResponse
-import com.bangkitdicoding.githubuserapp.data.response.GithubResponse
-import com.bangkitdicoding.githubuserapp.data.response.ItemsItem
+import com.bangkitdicoding.data.remote.response.DetailUserResponse
+import com.bangkitdicoding.data.remote.response.GithubResponse
+import com.bangkitdicoding.data.remote.response.ItemsItem
 import  retrofit2.Call
 import retrofit2.http.*
 

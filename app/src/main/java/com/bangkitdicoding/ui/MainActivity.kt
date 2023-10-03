@@ -1,12 +1,14 @@
-package com.bangkitdicoding.githubuserapp.ui
+package com.bangkitdicoding.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bangkitdicoding.githubuserapp.data.response.ItemsItem
+import com.bangkitdicoding.data.remote.response.ItemsItem
+import com.bangkitdicoding.githubuserapp.R
 import com.bangkitdicoding.githubuserapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -45,7 +47,21 @@ class MainActivity : AppCompatActivity() {
 
             }
             }
-
+        binding.searchBar.inflateMenu(R.menu.menu_option)
+        binding.searchBar.setOnMenuItemClickListener { itemMenu ->
+            when (itemMenu.itemId){
+                R.id.listMode -> {
+                    val modeIntent = Intent(this, SettingActivity::class.java)
+                    startActivity(modeIntent)
+                    true
+                }
+                R.id.list_favorite -> {
+                    val favoriteIntent = Intent(this, FavoriteActivity::class.java)
+                    startActivity(favoriteIntent)
+                    true
+                } else -> false
+            }
+        }
     }
     private fun showLoading(state: Boolean) {
         binding.progressBar.visibility = if (state) View.VISIBLE else View.GONE }

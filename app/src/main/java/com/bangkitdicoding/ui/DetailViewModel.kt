@@ -1,13 +1,12 @@
-package com.bangkitdicoding.githubuserapp.ui
+package com.bangkitdicoding.ui
 
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.bangkitdicoding.githubuserapp.data.response.DetailUserResponse
-import com.bangkitdicoding.githubuserapp.data.response.GithubResponse
-import com.bangkitdicoding.githubuserapp.data.response.ItemsItem
-import com.bangkitdicoding.githubuserapp.data.retrofit.ApiConfig
+import com.bangkitdicoding.data.remote.response.DetailUserResponse
+import com.bangkitdicoding.data.remote.response.ItemsItem
+import com.bangkitdicoding.data.remote.retrofit.ApiConfig
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -51,7 +50,7 @@ class DetailViewModel:  ViewModel() {
 
     fun getFollowers (user: String) {
         _isLoading.value = true
-        val client =ApiConfig.getApiServices().getFollowers(user)
+        val client = ApiConfig.getApiServices().getFollowers(user)
         client.enqueue(object : Callback<List<ItemsItem>> {
             override fun onResponse(
                 call: Call<List<ItemsItem>>,
@@ -74,7 +73,7 @@ class DetailViewModel:  ViewModel() {
 
     fun getFollowing (user: String) {
         _isLoading.value = true
-        val client =ApiConfig.getApiServices().getFollowing(user)
+        val client = ApiConfig.getApiServices().getFollowing(user)
         client.enqueue(object  : Callback<List<ItemsItem>>{
             override fun onResponse(
                 call: Call<List<ItemsItem>>,

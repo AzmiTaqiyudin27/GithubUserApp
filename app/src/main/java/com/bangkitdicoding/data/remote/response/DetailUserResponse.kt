@@ -1,47 +1,17 @@
-package com.bangkitdicoding.githubuserapp.data.response
+package com.bangkitdicoding.data.remote.response
 
 import com.google.gson.annotations.SerializedName
 
 data class DetailUserResponse(
 
-	@field:SerializedName("gists_url")
-	val gistsUrl: String,
-
-	@field:SerializedName("repos_url")
-	val reposUrl: String,
-
 	@field:SerializedName("following_url")
 	val followingUrl: String,
-
-	@field:SerializedName("twitter_username")
-	val twitterUsername: Any,
-
-	@field:SerializedName("bio")
-	val bio: Any,
 
 	@field:SerializedName("created_at")
 	val createdAt: String,
 
 	@field:SerializedName("login")
 	val login: String,
-
-	@field:SerializedName("type")
-	val type: String,
-
-	@field:SerializedName("blog")
-	val blog: String,
-
-	@field:SerializedName("subscriptions_url")
-	val subscriptionsUrl: String,
-
-	@field:SerializedName("updated_at")
-	val updatedAt: String,
-
-	@field:SerializedName("site_admin")
-	val siteAdmin: Boolean,
-
-	@field:SerializedName("company")
-	val company: Any,
 
 	@field:SerializedName("id")
 	val id: Int,

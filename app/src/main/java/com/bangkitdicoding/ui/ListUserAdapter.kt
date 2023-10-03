@@ -1,4 +1,4 @@
-package com.bangkitdicoding.githubuserapp.ui
+package com.bangkitdicoding.ui
 
 
 import android.content.Intent
@@ -7,22 +7,19 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bangkitdicoding.githubuserapp.data.response.ItemsItem
+import com.bangkitdicoding.data.remote.response.ItemsItem
 import com.bangkitdicoding.githubuserapp.databinding.ItemUserBinding
-import com.bumptech.glide.Glide
+import com.bangkitdicoding.utils.loadImage
 
 class ListUserAdapter: ListAdapter <ItemsItem, ListUserAdapter.MyViewHolder>(DIFF_CALLBACK) {
     class MyViewHolder(private val binding: ItemUserBinding) :RecyclerView.ViewHolder(binding.root){
         fun bind(Item: ItemsItem){
             binding.apply {
-                Glide.with(itemView.context)
-                    .load(Item.avatarUrl)
-                    .circleCrop()
-                    .into(imgItemPhoto)
+                imgItemPhoto.loadImage(Item.avatarUrl)
                 tvItemName.text = Item.login
                 itemView.setOnClickListener{
                         val intentDetail = Intent(itemView.context, DetailActivity::class.java)
-                        intentDetail.putExtra( DetailActivity.USERNAME, Item.login)
+                        intentDetail.putExtra(DetailActivity.USERNAME, Item.login)
                         itemView.context.startActivity(intentDetail)
                 }
             }

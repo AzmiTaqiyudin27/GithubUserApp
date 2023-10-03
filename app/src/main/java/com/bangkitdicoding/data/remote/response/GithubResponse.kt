@@ -1,4 +1,4 @@
-package com.bangkitdicoding.githubuserapp.data.response
+package com.bangkitdicoding.data.remote.response
 
 import com.google.gson.annotations.SerializedName
 
