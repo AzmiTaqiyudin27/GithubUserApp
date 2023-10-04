@@ -14,8 +14,6 @@ class RepositoryUser (
     private val settingPreferences: SettingPreferences
     ) {
 
-    private val result = MediatorLiveData<Result<List<FavoriteUser>>>()
-
     fun addFavorite(favoriteUser: FavoriteUser) {
         appExecutors.diskIO.execute{
             daoUser.addUser(favoriteUser)
