@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bangkitdicoding.data.local.Entity.FavoriteUser
-import com.bangkitdicoding.data.remote.response.ItemsItem
 import com.bangkitdicoding.githubuserapp.databinding.ItemUserBinding
 import com.bangkitdicoding.utils.loadImage
 

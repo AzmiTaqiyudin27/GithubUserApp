@@ -1,7 +1,6 @@
 package com.bangkitdicoding.data
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MediatorLiveData
 import com.bangkitdicoding.data.local.Entity.FavoriteUser
 import com.bangkitdicoding.data.local.Room.DaoUser
 import com.bangkitdicoding.utils.AppExecutors
