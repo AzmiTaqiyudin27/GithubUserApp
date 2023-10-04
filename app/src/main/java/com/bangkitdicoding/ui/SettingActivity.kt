@@ -10,14 +10,14 @@ import com.bangkitdicoding.utils.ViewModelFactory
 import com.google.android.material.switchmaterial.SwitchMaterial
 
 class SettingActivity : AppCompatActivity() {
-    private val SettingViewModel: SettingViewModel by viewModels { ViewModelFactory.getInstance(this) }
+    private val settingViewModel: SettingViewModel by viewModels { ViewModelFactory.getInstance(this) }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_setting)
 
         val switchTheme = findViewById<SwitchMaterial>(R.id.switch_theme)
 
-        SettingViewModel.getThemeSettings().observe(this) { isDarkModeActive: Boolean ->
+        settingViewModel.getThemeSettings().observe(this) { isDarkModeActive: Boolean ->
             if (isDarkModeActive) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
                 switchTheme.isChecked = true
@@ -27,7 +27,7 @@ class SettingActivity : AppCompatActivity() {
             }
         }
         switchTheme.setOnCheckedChangeListener{ _: CompoundButton, isChecked: Boolean ->
-            SettingViewModel.saveThemeSetting(isChecked)
+            settingViewModel.saveThemeSetting(isChecked)
         }
     }
 }

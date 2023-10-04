@@ -13,7 +13,9 @@ import com.bangkitdicoding.githubuserapp.databinding.FragmentFollowBinding
 
 class FollowFragment : Fragment() {
 
-    private lateinit var binding: FragmentFollowBinding
+    private var _binding: FragmentFollowBinding? = null
+    private val binding get() = _binding!!
+
     private val detailViewModel by viewModels<DetailViewModel>()
 
 
@@ -22,7 +24,7 @@ class FollowFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentFollowBinding.inflate(inflater, container, false)
+        _binding = FragmentFollowBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -43,7 +45,7 @@ class FollowFragment : Fragment() {
         }
     }
 
-    fun setList(item: List<ItemsItem>){
+    private fun setList(item: List<ItemsItem>){
         val  listUser = ListFollowAdapter(item)
         binding.follow.layoutManager = LinearLayoutManager(requireActivity())
         binding.follow.adapter = listUser

@@ -4,16 +4,12 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.asLiveData
-import androidx.lifecycle.viewModelScope
-import com.bangkitdicoding.data.RepositoryUser
 import com.bangkitdicoding.data.remote.response.GithubResponse
 import com.bangkitdicoding.data.remote.response.ItemsItem
 import com.bangkitdicoding.data.remote.retrofit.ApiConfig
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import kotlinx.coroutines.launch
 
 class ListViewModel : ViewModel(){
 

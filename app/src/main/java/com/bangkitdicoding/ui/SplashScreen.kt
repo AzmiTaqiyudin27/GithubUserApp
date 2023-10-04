@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatDelegate
 import com.bangkitdicoding.githubuserapp.R
@@ -26,7 +27,7 @@ class SplashScreen : AppCompatActivity() {
             }
         }
 
-        Handler().postDelayed({
+        Handler(Looper.getMainLooper()).postDelayed({
             startActivity(Intent(this, MainActivity::class.java))
             finish()
         }, SPLASH_TIMEOUT)

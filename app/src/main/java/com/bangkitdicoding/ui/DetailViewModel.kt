@@ -25,30 +25,32 @@ class DetailViewModel:  ViewModel() {
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
 
-    fun getDetail(user:String) {
+    fun getDetail(user: String) {
         _isLoading.value = true
         val client = ApiConfig.getApiServices().getDetailUser(user)
         client.enqueue(object : Callback<DetailUserResponse> {
             override fun onResponse(
                 call: Call<DetailUserResponse>,
                 response: Response<DetailUserResponse>
-            ){
+            ) {
                 _isLoading.value = false
-                if (response.isSuccessful){
+                if (response.isSuccessful) {
                     _username.value = response.body()
                 } else {
-                    Log.e(DetailActivity.TAG, "onFailure: ${response.message()}")
+                    val errorMessage = "Failed to get user detail: ${response.message()}"
+                    Log.e(DetailActivity.TAG, errorMessage)
                 }
             }
 
-            override fun onFailure(call: Call<DetailUserResponse>, t: Throwable){
+            override fun onFailure(call: Call<DetailUserResponse>, t: Throwable) {
                 _isLoading.value = false
-                Log.e(DetailActivity.TAG, "onFailure: ${t.message}")
+                val errorMessage = "Failed to get user detail: ${t.message}"
+                Log.e(DetailActivity.TAG, errorMessage)
             }
         })
     }
 
-    fun getFollowers (user: String) {
+    fun getFollowers(user: String) {
         _isLoading.value = true
         val client = ApiConfig.getApiServices().getFollowers(user)
         client.enqueue(object : Callback<List<ItemsItem>> {
@@ -57,39 +59,43 @@ class DetailViewModel:  ViewModel() {
                 response: Response<List<ItemsItem>>
             ) {
                 _isLoading.value = false
-                if (response.isSuccessful){
+                if (response.isSuccessful) {
                     _followers.value = response.body()
                 } else {
-                    Log.e(DetailActivity.TAG, "onFailure ${response.message()}")
+                    val errorMessage = "Failed to get followers: ${response.message()}"
+                    Log.e(DetailActivity.TAG, errorMessage)
                 }
             }
 
             override fun onFailure(call: Call<List<ItemsItem>>, t: Throwable) {
                 _isLoading.value = false
-                Log.e(DetailActivity.TAG, "onFailure: ${t.message}")
+                val errorMessage = "Failed to get followers: ${t.message}"
+                Log.e(DetailActivity.TAG, errorMessage)
             }
         })
     }
 
-    fun getFollowing (user: String) {
+    fun getFollowing(user: String) {
         _isLoading.value = true
         val client = ApiConfig.getApiServices().getFollowing(user)
-        client.enqueue(object  : Callback<List<ItemsItem>>{
+        client.enqueue(object : Callback<List<ItemsItem>> {
             override fun onResponse(
                 call: Call<List<ItemsItem>>,
                 response: Response<List<ItemsItem>>
             ) {
                 _isLoading.value = false
-                if (response.isSuccessful){
+                if (response.isSuccessful) {
                     _following.value = response.body()
                 } else {
-                    Log.e(DetailActivity.TAG, "onFailure ${response.message()}")
+                    val errorMessage = "Failed to get following: ${response.message()}"
+                    Log.e(DetailActivity.TAG, errorMessage)
                 }
             }
 
             override fun onFailure(call: Call<List<ItemsItem>>, t: Throwable) {
                 _isLoading.value = false
-                Log.e(DetailActivity.TAG, "onFailure: ${t.message}")
+                val errorMessage = "Failed to get following: ${t.message}"
+                Log.e(DetailActivity.TAG, errorMessage)
             }
         })
     }
