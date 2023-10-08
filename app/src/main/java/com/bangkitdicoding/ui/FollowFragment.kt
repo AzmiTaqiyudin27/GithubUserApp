@@ -13,9 +13,7 @@ import com.bangkitdicoding.githubuserapp.databinding.FragmentFollowBinding
 
 class FollowFragment : Fragment() {
 
-    private var _binding: FragmentFollowBinding? = null
-    private val binding get() = _binding!!
-
+    private  var binding: FragmentFollowBinding? = null
     private val detailViewModel by viewModels<DetailViewModel>()
 
 
@@ -24,8 +22,8 @@ class FollowFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentFollowBinding.inflate(inflater, container, false)
-        return binding.root
+        binding = FragmentFollowBinding.inflate(inflater, container, false)
+        return binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -47,11 +45,11 @@ class FollowFragment : Fragment() {
 
     private fun setList(item: List<ItemsItem>){
         val  listUser = ListFollowAdapter(item)
-        binding.follow.layoutManager = LinearLayoutManager(requireActivity())
-        binding.follow.adapter = listUser
+        binding?.follow?.layoutManager = LinearLayoutManager(requireActivity())
+        binding?.follow?.adapter = listUser
     }
 
-    private fun showLoading(state: Boolean) { binding.progressBar.visibility = if (state) View.VISIBLE else View.GONE }
+    private fun showLoading(state: Boolean) { binding?.progressBar?.visibility = if (state) View.VISIBLE else View.GONE }
 
     companion object {
         const val ARG_POSITION = "position"
